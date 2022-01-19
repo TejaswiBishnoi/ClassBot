@@ -14,22 +14,20 @@ namespace ClassBot
         static void Main(string[] args)
         {
             var Obj = new Worker();
-
+            var user = new User();
+            //Login Test.
+            //Code to reach login page.
             Obj.driver.Navigate().GoToUrl("https://lms.iitjammu.ac.in");
             Thread.Sleep(1000);
             var LogIn = Obj.driver.FindElement(By.CssSelector(@"a[href='https://lms.iitjammu.ac.in/login/index.php']"));
             LogIn.Click();
             Thread.Sleep(1000);
-            Obj.Login();
-
-            Obj.driver.Navigate().GoToUrl("https://lms.iitjammu.ac.in/course/view.php?id=324");
-            Thread.Sleep(1000);
-
-            var ZoomLink = Obj.driver.FindElement(By.XPath("//*[contains(text(), 'click here')]"));
-            string link = ZoomLink.GetAttribute("href");
-            Obj.driver.Navigate().GoToUrl(link);
-            Thread.Sleep(5000);
+            //Login Function call.
+            Obj.Login(user);
+            Console.ReadKey();
             Obj.driver.Quit();
+            GC.Collect();
+
         }
     }
 }

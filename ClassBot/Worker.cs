@@ -11,14 +11,14 @@ namespace ClassBot
     class Worker
     {
         public ChromeDriver driver = new ChromeDriver();
-        public void Login()
+        public void Login(User user)
         {
             var UsrNam = driver.FindElement(By.Name("username"));
             var PasWrd = driver.FindElement(By.Name("password"));
             var LgnBtn = driver.FindElement(By.Id("loginbtn"));
-
-            UsrNam.SendKeys("2020UCS0084");
-            PasWrd.SendKeys("Iam100%dehru");
+            
+            UsrNam.SendKeys(user.User_id);
+            PasWrd.SendKeys(user.Password);
             LgnBtn.Click();
         }
     }
