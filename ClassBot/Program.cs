@@ -26,7 +26,6 @@ namespace ClassBot
             Obj.Login(user);
             Console.ReadKey();
             Obj.driver.Quit();
-            GC.Collect();
 
         }
     }
