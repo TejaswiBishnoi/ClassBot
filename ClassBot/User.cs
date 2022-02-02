@@ -10,13 +10,14 @@ namespace ClassBot
     {
         private string password;
         private string user_id;
+        private bool isNull = false;
         public User()
         {
             password = "";
             user_id = "";
-            Get_Data();
+            LoadData();
         }
-        private void Get_Data()
+        private void LoadData()
         {
             using (StreamReader sr = File.OpenText("UsrDet.txt"))
             {
@@ -24,14 +25,12 @@ namespace ClassBot
                 password = sr.ReadLine();
                 user_id = sr.ReadLine();
 #pragma warning restore CS8601 // Possible null reference assignment.
+                if (password == null || user_id == null) isNull = true;
             }
         }
-        public void Details(out string User_id, out string Password)
-        {
-            User_id = user_id;
-            Password = password;
-        }
+        //GET only properties to return User_id and Password.
         public string User_id => user_id;
         public string Password => password;
+        public bool IsNull => isNull;
     }
 }
