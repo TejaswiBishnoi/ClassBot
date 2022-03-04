@@ -30,16 +30,9 @@ namespace BotTest
         public void ZoomSignLogin()
         {
             testappworker.ZoomSign();
-            Thread.Sleep(10000);
-            try
-            {
-                testappworker.wd.FindElementByName("Zoom Meeting");
-                Assert.That(true);
-            }
-            catch
-            {
-                Assert.That(false);
-            }
+            Thread.Sleep(5000);
+            var f = testappworker.WaitingForHost();
+            Assert.IsTrue(f);
         }
         [Test]
         public void ZoomWaitingForHostTest()
