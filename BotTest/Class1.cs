@@ -41,5 +41,11 @@ namespace BotTest
                 Assert.That(false);
             }
         }
+        [Test]
+        public void ZoomWaitingForHostTest()
+        {
+            var f = testappworker.WaitingForHost();
+            Assert.IsTrue(f);
+        }
     }
 }

@@ -46,6 +46,19 @@ namespace AppControl
             catch { };
         }
 
+        public bool WaitingForHost()
+        {
+            try
+            {
+                var f = wd.FindElementByName("Please wait for the host to start this meeting.");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
     }
 }
