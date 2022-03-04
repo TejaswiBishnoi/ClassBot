@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using AppControl;
 
 namespace ClassBot
 {
@@ -12,6 +13,7 @@ namespace ClassBot
     {
         public ChromeDriver driver = new ChromeDriver(); // Creates a ChromeDriver session.
         const string baseUrl = @"https://lms.iitjammu.ac.in/course/view.php?id=";
+        public AppWorker appControl = new();
         public void Login(User user, bool mid = false)
         {
             if (!mid) driver.Navigate().GoToUrl(@"https://lms.iitjammu.ac.in/login/index.php");
@@ -47,9 +49,18 @@ namespace ClassBot
             }
             catch
             {
-
+                JoinClass();
             }
             //if (driver.FindElement(By.ClassName("errorcode")) != null) Console.Beep();
+        }
+
+        public void JoinClass()
+        {
+            var ch = driver.FindElement(By.XPath("//*[text()='click here']"));
+            ch.Click();
+            Thread.Sleep(2000);
+            appControl.ZoomChr();
+            appControl.ZoomSign();
         }
     }
 }
