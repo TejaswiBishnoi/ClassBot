@@ -40,5 +40,12 @@ namespace BotTest
             var f = testappworker.WaitingForHost();
             Assert.IsTrue(f);
         }
+        [Test]
+        public void MeetingReadyJoined()
+        {
+            //Please make sure you've joined a meeting and currently in Waiting room or in Meeting
+            var f = testappworker.MeetingReady();
+            Assert.IsTrue(f);
+        }
     }
 }

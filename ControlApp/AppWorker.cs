@@ -58,6 +58,18 @@ namespace AppControl
                 return false;
             }
         }
+        public bool MeetingReady()
+        {
+            try
+            {
+                var f = wd.FindElementByName("Zoom Meeting");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
     }

@@ -20,7 +20,7 @@ namespace ClassBot
             //Login Test.
             //Code to reach login page.
             Obj.Login(user);
-            Obj.ReachCourse(329);
+            Obj.ReachCourse(324);
             Console.ReadLine();
 
         }
