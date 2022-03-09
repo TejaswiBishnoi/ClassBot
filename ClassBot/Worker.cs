@@ -45,7 +45,7 @@ namespace ClassBot
             {
                 var Dan = driver.FindElement(By.ClassName("errorcode"));
                 Console.WriteLine("Page Does not Exist");
-                Console.Beep();
+                Console.Beep();                
             }
             catch
             {
