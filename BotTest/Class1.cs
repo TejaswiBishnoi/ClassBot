@@ -1,5 +1,8 @@
 ﻿using NUnit.Framework;
+using System;
 using AppControl;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium.Windows;
 namespace BotTest
 {
     [TestFixture]
@@ -47,5 +50,12 @@ namespace BotTest
             var f = testappworker.MeetingReady();
             Assert.IsTrue(f);
         }
+        [Test]
+        public void CheckMeetingLeaved()
+        {
+            Thread.Sleep(5000);
+            Assert.That(testappworker.LeaveMeeting());
+        }
+
     }
 }

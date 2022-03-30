@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Interactions;
 namespace AppControl
 {
     public class AppWorker
@@ -40,8 +41,7 @@ namespace AppControl
             Thread.Sleep(10000);
             try
             {
-                var SignButton = wd.FindElementByName("Sign in to Join");
-                SignButton.Click();
+                wd.FindElementByName("Sign in to Join").Click();
             }
             catch { };
         }
@@ -70,7 +70,26 @@ namespace AppControl
                 return false;
             }
         }
-
-
+        public bool LeaveMeeting()
+        {
+            try
+            {
+                wd.FindElementByName("Leave, Alt+Q").Click();
+                wd.FindElementByName("Leave Meeting").Click();
+                return true;
+            }
+            catch
+            {
+                
+            }
+            try
+            {
+                Actions act = new Actions(wd);
+                act.SendKeys(OpenQA.Selenium.Keys.LeftAlt + OpenQA.Selenium.Keys.F4 + OpenQA.Selenium.Keys.LeftAlt).Perform();
+                wd.FindElementByName("Leave Meeting").Click();
+                return true;
+            }
+            catch { return false; }
+        }
     }
 }
